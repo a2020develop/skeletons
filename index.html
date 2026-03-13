@@ -14,7 +14,14 @@
   <title>Skeletons - Tower Defense</title>
 
   <style>
+  @font-face {
+    font-family: 'Lilita One';
+    src: url('/skeletons/fonts/LilitaOne-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
   #installScreen{
+    font-family: 'Lilita One';
     position:fixed;
     top:0;
     left:0;
@@ -26,14 +33,12 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    font-family:sans-serif;
     text-align:center;
-    padding:20px;
     z-index:9999;
   }
 
   #installScreen img{
-    width:120px;
+    width:60%;
     margin-bottom:20px;
   }
   </style>
@@ -54,14 +59,10 @@
     if(mobile && !standalone){
       document.body.innerHTML = `
       <div id="installScreen">
-      <img src="/skeletons/pics/icons/Skull-256px.png">
+      <img src="/skeletons/pics/install.png">
       <h2>Install Skeleton Defense</h2>
-      <p>Add the game to your Home Screen for the best experience.</p>
-      <p style="margin-top:20px">
-        <b>iPhone:</b><br> Tap <b>Share</b> → <b>Add to Home Screen</b>
-        <br><br>
-        <b>Android:</b><br> Tap <b>⋮</b> → <b>Add to Home Screen</b>
-      </p>
+      <p>Share → Add to Home Screen</p>
+      <img src="/skeletons/pics/icons/Skull-256px.png" style="width:80px;margin-top:50px">
       </div>`;
     }
   });
