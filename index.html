@@ -1,18 +1,76 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/skeletons/pics/icons/Skull-256px.png" />
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Skeleton Defense"/>
-    <meta name="theme-color" content="#000">
-    <title>Skeletons - Tower Defense</title>
-    <script type="module" crossorigin src="/skeletons/assets/index-sbCLAZ5j.js"></script>
-    <link rel="stylesheet" crossorigin href="/skeletons/assets/index-BEOqmWA1.css">
-  </head>
-  <body>
-    <div id="app" style="position: fixed;"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/skeletons/pics/icons/Skull-256px.png"/>
+  <link rel="manifest" href="/skeletons/manifest.json">
+  <link rel="apple-touch-icon" href="/skeletons/pics/icons/Skull-192px.png">
+
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="Skeleton Defense"/>
+  <meta name="theme-color" content="#000">
+  <title>Skeletons - Tower Defense</title>
+
+  <style>
+  #installScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    font-family:sans-serif;
+    text-align:center;
+    padding:20px;
+    z-index:9999;
+  }
+
+  #installScreen img{
+    width:120px;
+    margin-bottom:20px;
+  }
+  </style>
+
+  <script>
+
+  function isMobile(){
+    return /iphone|ipad|ipod|android/i.test(navigator.userAgent);
+  }
+
+  function isStandalone(){
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+
+  window.addEventListener("load",()=>{
+    const mobile = isMobile();
+    const standalone = isStandalone();
+    if(mobile && !standalone){
+      document.body.innerHTML = `
+      <div id="installScreen">
+      <img src="/skeletons/pics/icons/Skull-256px.png">
+      <h2>Install Skeleton Defense</h2>
+      <p>Add the game to your Home Screen for the best experience.</p>
+      <p style="margin-top:20px">
+        <b>iPhone:</b><br> Tap <b>Share</b> → <b>Add to Home Screen</b>
+        <br><br>
+        <b>Android:</b><br> Tap <b>⋮</b> → <b>Add to Home Screen</b>
+      </p>
+      </div>`;
+    }
+  });
+  </script>
+  <script type="module" crossorigin src="/skeletons/assets/index-sbCLAZ5j.js"></script>
+  <link rel="stylesheet" crossorigin href="/skeletons/assets/index-BEOqmWA1.css">
+</head>
+
+<body>
+  <div id="app" style="position: fixed;"></div>
+</body>
 </html>
